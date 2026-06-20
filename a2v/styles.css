@@ -309,24 +309,11 @@ h3 {
 .product-box {
   position: relative;
   z-index: 1;
-  width: min(92%, 540px);
+  width: min(94%, 580px);
   filter: drop-shadow(0 34px 60px rgba(0, 0, 0, 0.45));
   animation: float 5.5s ease-in-out infinite;
 }
 
-.glass-card {
-  position: absolute;
-  z-index: 2;
-  min-width: 166px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(22px) saturate(180%);
-}
-
-.glass-card span,
 .glass-list span,
 .support-card span {
   display: block;
@@ -335,22 +322,6 @@ h3 {
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-
-.glass-card strong {
-  display: block;
-  margin-top: 6px;
-  font-size: 1.2rem;
-}
-
-.card-top {
-  top: 72px;
-  right: 28px;
-}
-
-.card-bottom {
-  left: 24px;
-  bottom: 64px;
 }
 
 .showcase {
@@ -597,10 +568,6 @@ footer {
   .glass-orbit {
     min-height: 390px;
     border-radius: 28px;
-  }
-
-  .glass-card {
-    display: none;
   }
 
   .section {

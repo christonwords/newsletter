@@ -7,11 +7,7 @@ What is included
 ----------------
 - A2V.exe
 - Bundled FFmpeg and FFprobe in the ffmpeg\bin folder
-- Support and uninstall files
-
-Default install location
-------------------------
-%LOCALAPPDATA%\Programs\A2V
+- Support files
 
 Helpful files
 -------------
@@ -25,9 +21,9 @@ Support
 
 Notes
 -----
+- A2V is portable.
 - A2V will automatically use the bundled FFmpeg binaries included with this package.
-- If FFmpeg is already installed on your system, the bundled copy still takes priority for consistency.
-- If the app is already open, close it before reinstalling or uninstalling.
+- If another FFmpeg copy exists on your system, the bundled copy still takes priority for consistency.
 
 Third-party notice
 ------------------
