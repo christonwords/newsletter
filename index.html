@@ -3,27 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="christon - producer, drumkits, sounds, and go-to vsts.">
+    <meta name="description" content="christon - producer, drumkits, sounds, go to vsts, and a2v.">
     <title>christon.xyz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Old+Standard+TT:wght@400;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;600;700;800&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <div class="crt" aria-hidden="true"></div>
-    <div class="paper-grain" aria-hidden="true"></div>
+    <video class="background-video" autoplay muted loop playsinline aria-hidden="true">
+      <source src="video%20background.mp4" type="video/mp4">
+    </video>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="cursor-halo" aria-hidden="true"></div>
 
     <audio id="background-audio" src="Background%20Music/background%20audio.mp3" loop preload="metadata"></audio>
 
     <header class="site-header">
-      <p class="eyebrow">est. somewhere between wax, wire, and weather</p>
-      <h1>christon gazette</h1>
-      <div class="headline-rule">
-        <span>producer edition</span>
-        <span>christon.xyz</span>
-        <span>all lowercase department</span>
-      </div>
+      <a class="brand-mark" href="#top">christon</a>
       <nav class="nav" aria-label="primary">
         <a href="#drumkits">drumkits</a>
         <a href="#vsts">go to vsts</a>
@@ -33,114 +30,155 @@
       </nav>
     </header>
 
-    <main>
-      <section class="hero" aria-labelledby="lead-story">
-        <div class="date-line">daily frequency record • monday morning issue • printed in dust and signal</div>
-        <div class="hero-grid">
-          <article class="lead">
-            <p class="kicker">special dispatch</p>
-            <h2 id="lead-story">the sound arrives looking like yesterday's paper.</h2>
-            <p>
-              the best way to keep going is to keep reminding yourself why you started.
-              waking up uninspired will not stop you from trying when the purpose is clear.
-              the real question is how bad you want it, and what you are willing to keep becoming for it.
-            </p>
-          </article>
-          <aside class="broadcast-card" aria-label="signal monitor">
-            <div class="screen">
-              <span class="scan-text">transmitting</span>
-              <span class="pulse"></span>
-            </div>
-            <p>background audio is ready. press sound when the room is ready for it.</p>
-          </aside>
+    <main id="top">
+      <section class="hero section-shell" aria-labelledby="lead-title">
+        <div class="hero-copy float-in">
+          <p class="eyebrow">signal from christon.xyz</p>
+          <h1 id="lead-title">christon</h1>
+          <p class="manifesto">
+            the best way to keep going is to keep reminding yourself why you started.
+            waking up uninspired will not stop you from trying when the purpose is clear.
+            the real question is how bad you want it, and what you are willing to keep becoming for it.
+          </p>
+        </div>
+
+        <div class="hero-orbit" aria-label="featured links">
+          <a class="orb orb-large float-in" href="#drumkits" data-drift="1">
+            <span>drumkits</span>
+            <img src="Drumkit%20Covers%20%26%20Links/Michael%20Drumkit.jpg" alt="michael drumkit cover">
+          </a>
+          <a class="orb float-in" href="a2v/" data-drift="2">
+            <span>a2v</span>
+            <img src="a2v/a2v_box_transparent.png" alt="a2v product box">
+          </a>
+          <a class="orb orb-wide float-in" href="#vsts" data-drift="3">
+            <span>go to vsts</span>
+            <img src="Go%20to%20VSTs/XV%20-%205080.png" alt="xv - 5080">
+          </a>
         </div>
       </section>
 
       <section class="ticker" aria-label="ticker">
         <p>
-          <span>breaking: new drums found in the margins</span>
-          <span>cabinet report: go to vsts remain undefeated</span>
-          <span>public notice: everything is lowercase</span>
-          <span>late edition: texture is a feature</span>
+          <span>beats for purchase by message or email</span>
+          <span>drumkits available now</span>
+          <span>go to vsts archived below</span>
+          <span>a2v lives at christon.xyz/a2v</span>
         </p>
       </section>
 
-      <section class="section drumkits" id="drumkits" aria-labelledby="drumkits-title">
-        <div class="section-heading">
-          <p class="kicker">classified sounds</p>
-          <h2 id="drumkits-title">drumkits for sale</h2>
-          <p>covers filed in the order requested, links stamped and ready.</p>
+      <section class="section-shell drumkits" id="drumkits" aria-labelledby="drumkits-title">
+        <div class="section-heading float-in">
+          <p class="eyebrow">the red room</p>
+          <h2 id="drumkits-title">drumkits</h2>
+          <p>three covers suspended over the signal. open one when the drums call back.</p>
         </div>
 
         <div class="kit-grid">
-          <a class="kit-card" href="https://payhip.com/b/LFezG" target="_blank" rel="noreferrer">
+          <a class="kit-card float-in" href="https://payhip.com/b/LFezG" target="_blank" rel="noreferrer">
             <img src="Drumkit%20Covers%20%26%20Links/Michael%20Drumkit.jpg" alt="michael drumkit cover">
             <span>michael drumkit</span>
           </a>
-          <a class="kit-card" href="https://payhip.com/b/4Zgut" target="_blank" rel="noreferrer">
+          <a class="kit-card float-in" href="https://payhip.com/b/4Zgut" target="_blank" rel="noreferrer">
             <img src="Drumkit%20Covers%20%26%20Links/Rolling%20Stone%20Soundkit.jpg" alt="rolling stone soundkit cover">
             <span>rolling stone soundkit</span>
           </a>
-          <a class="kit-card" href="https://payhip.com/b/HqM5w" target="_blank" rel="noreferrer">
+          <a class="kit-card float-in" href="https://payhip.com/b/HqM5w" target="_blank" rel="noreferrer">
             <img src="Drumkit%20Covers%20%26%20Links/Prosper%20Drumkit.jpg" alt="prosper drumkit cover">
             <span>prosper drumkit</span>
           </a>
         </div>
       </section>
 
-      <section class="section vsts" id="vsts" aria-labelledby="vsts-title">
-        <div class="section-heading">
-          <p class="kicker">studio desk inventory</p>
+      <section class="section-shell vsts" id="vsts" aria-labelledby="vsts-title">
+        <div class="section-heading float-in">
+          <p class="eyebrow">sound reliquary</p>
           <h2 id="vsts-title">go to vsts</h2>
-          <p>a wall of trusted instruments, banks, racks, keys, strings, and strange reliable furniture.</p>
+          <p>not a list anymore. a floating archive of the machines, banks, keys, and racks that keep returning.</p>
         </div>
 
-        <div class="vst-grid">
-          <figure><img src="Go%20to%20VSTs/6S%20Montana%20Rack.png" alt="6s montana rack"><figcaption>6s montana rack</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/D%20-%2050.png" alt="d - 50"><figcaption>d - 50</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/JD%20-%20800.png" alt="jd - 800"><figcaption>jd - 800</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/JV%20-%201080.png" alt="jv - 1080"><figcaption>jv - 1080</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Konktat%20Bank%20-%20EMU%20Proteus%20Rack.png" alt="kontakt bank - emu proteus rack"><figcaption>kontakt bank - emu proteus rack</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%205000%20Karat.png" alt="kontakt bank - 5000 karat"><figcaption>kontakt bank - 5000 karat</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Evolution%20Infinity.png" alt="kontakt bank - evolution infinity"><figcaption>kontakt bank - evolution infinity</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20History%20World%20Tour.png" alt="kontakt bank - history world tour"><figcaption>kontakt bank - history world tour</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Roland%20Fantom%20X8.png" alt="kontakt bank - roland fantom x8"><figcaption>kontakt bank - roland fantom x8</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Techno%20Rap.png" alt="kontakt bank - techno rap"><figcaption>kontakt bank - techno rap</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Back.png" alt="kontakt bank - trap back"><figcaption>kontakt bank - trap back</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Motivation%20101.png" alt="kontakt bank - trap motivation 101"><figcaption>kontakt bank - trap motivation 101</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Yamaha%20Motif%20Pianos.png" alt="kontakt bank - yamaha motif pianos"><figcaption>kontakt bank - yamaha motif pianos</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Lounge%20Lizard.png" alt="lounge lizard"><figcaption>lounge lizard</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Pure%20Synth%20Platinum.png" alt="pure synth platinum"><figcaption>pure synth platinum</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Romantic%20Keys.png" alt="romantic keys"><figcaption>romantic keys</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/Studio%20Strings.png" alt="studio strings"><figcaption>studio strings</figcaption></figure>
-          <figure><img src="Go%20to%20VSTs/XV%20-%205080.png" alt="xv - 5080"><figcaption>xv - 5080</figcaption></figure>
+        <div class="reliquary">
+          <article class="vst-chapel chapel-wide float-in">
+            <div class="chapel-head">
+              <span>i</span>
+              <h3>racks</h3>
+            </div>
+            <div class="vst-strip">
+              <figure><img src="Go%20to%20VSTs/6S%20Montana%20Rack.png" alt="6s montana rack"><figcaption>6s montana rack</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/XV%20-%205080.png" alt="xv - 5080"><figcaption>xv - 5080</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/JV%20-%201080.png" alt="jv - 1080"><figcaption>jv - 1080</figcaption></figure>
+            </div>
+          </article>
+
+          <article class="vst-chapel float-in">
+            <div class="chapel-head">
+              <span>ii</span>
+              <h3>classic synths</h3>
+            </div>
+            <div class="vst-cluster">
+              <figure><img src="Go%20to%20VSTs/D%20-%2050.png" alt="d - 50"><figcaption>d - 50</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/JD%20-%20800.png" alt="jd - 800"><figcaption>jd - 800</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Pure%20Synth%20Platinum.png" alt="pure synth platinum"><figcaption>pure synth platinum</figcaption></figure>
+            </div>
+          </article>
+
+          <article class="vst-chapel float-in">
+            <div class="chapel-head">
+              <span>iii</span>
+              <h3>keys & strings</h3>
+            </div>
+            <div class="vst-cluster">
+              <figure><img src="Go%20to%20VSTs/Romantic%20Keys.png" alt="romantic keys"><figcaption>romantic keys</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Studio%20Strings.png" alt="studio strings"><figcaption>studio strings</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Lounge%20Lizard.png" alt="lounge lizard"><figcaption>lounge lizard</figcaption></figure>
+            </div>
+          </article>
+
+          <article class="vst-chapel chapel-wide float-in">
+            <div class="chapel-head">
+              <span>iv</span>
+              <h3>kontakt banks</h3>
+            </div>
+            <div class="bank-grid">
+              <figure><img src="Go%20to%20VSTs/Konktat%20Bank%20-%20EMU%20Proteus%20Rack.png" alt="kontakt bank - emu proteus rack"><figcaption>emu proteus rack</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%205000%20Karat.png" alt="kontakt bank - 5000 karat"><figcaption>5000 karat</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Evolution%20Infinity.png" alt="kontakt bank - evolution infinity"><figcaption>evolution infinity</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20History%20World%20Tour.png" alt="kontakt bank - history world tour"><figcaption>history world tour</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Roland%20Fantom%20X8.png" alt="kontakt bank - roland fantom x8"><figcaption>roland fantom x8</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Techno%20Rap.png" alt="kontakt bank - techno rap"><figcaption>techno rap</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Back.png" alt="kontakt bank - trap back"><figcaption>trap back</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Motivation%20101.png" alt="kontakt bank - trap motivation 101"><figcaption>trap motivation 101</figcaption></figure>
+              <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Yamaha%20Motif%20Pianos.png" alt="kontakt bank - yamaha motif pianos"><figcaption>yamaha motif pianos</figcaption></figure>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="section links" id="links" aria-labelledby="links-title">
-        <div class="section-heading">
-          <p class="kicker">public notices</p>
+      <section class="section-shell links" id="links" aria-labelledby="links-title">
+        <div class="section-heading float-in">
+          <p class="eyebrow">contact circle</p>
           <h2 id="links-title">links</h2>
-          <p>message or email to purchase beats, talk placements, custom work, or anything business related.</p>
+          <p>message or email to purchase beats, talk placements, custom work, licensing, or anything business related.</p>
         </div>
-        <aside class="business-notice">
-          <p class="kicker">business desk</p>
-          <h3>beats and serious inquiries move through the wire.</h3>
-          <p>for beat purchases, custom production, licensing, placements, collaborations, or anything else business related, send a message or email <a href="mailto:softparish@gmail.com">softparish@gmail.com</a>.</p>
-        </aside>
+
+        <div class="business-notice float-in">
+          <h3>beats and serious inquiries</h3>
+          <p>send a message or email <a href="mailto:softparish@gmail.com">softparish@gmail.com</a>.</p>
+        </div>
+
         <div class="link-board">
-          <a href="https://payhip.com/b/LFezG" target="_blank" rel="noreferrer">buy michael drumkit</a>
-          <a href="https://payhip.com/b/4Zgut" target="_blank" rel="noreferrer">buy rolling stone soundkit</a>
-          <a href="https://payhip.com/b/HqM5w" target="_blank" rel="noreferrer">buy prosper drumkit</a>
-          <a href="a2v/">open a2v</a>
-          <a href="https://instagram.com/christonwords/" target="_blank" rel="noreferrer">instagram</a>
-          <a href="mailto:softparish@gmail.com">softparish@gmail.com</a>
+          <a class="float-in" href="https://payhip.com/b/LFezG" target="_blank" rel="noreferrer">buy michael drumkit</a>
+          <a class="float-in" href="https://payhip.com/b/4Zgut" target="_blank" rel="noreferrer">buy rolling stone soundkit</a>
+          <a class="float-in" href="https://payhip.com/b/HqM5w" target="_blank" rel="noreferrer">buy prosper drumkit</a>
+          <a class="float-in" href="a2v/">open a2v</a>
+          <a class="float-in" href="https://instagram.com/christonwords/" target="_blank" rel="noreferrer">instagram</a>
+          <a class="float-in" href="mailto:softparish@gmail.com">softparish@gmail.com</a>
         </div>
       </section>
     </main>
 
     <footer>
-      <p>christon.xyz • a lower-case broadcast in ink, dust, and low voltage</p>
+      <p>christon.xyz</p>
     </footer>
 
     <script src="script.js"></script>
