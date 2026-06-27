@@ -2,9 +2,7 @@ from __future__ import annotations
 
 import json
 import math
-import os
 import re
-import shutil
 import struct
 import subprocess
 import tempfile
@@ -15,7 +13,7 @@ import webbrowser
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import urlparse
 
 
 APP_DIR = Path(__file__).resolve().parent
@@ -54,7 +52,14 @@ HTML = """<!doctype html>
       .actions { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:16px; }
       audio { width:100%; margin-top:14px; }
       .status { white-space:pre-wrap; border:1px solid var(--line); border-radius:18px; padding:12px; min-height:54px; background:rgba(0,0,0,.34); }
-      @media (max-width:760px) { .grid, .actions { grid-template-columns:1fr; } }
+      .manager-head { display:flex; align-items:end; justify-content:space-between; gap:12px; }
+      .manager-list { display:grid; gap:10px; margin-top:14px; }
+      .beat-row { display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; border:1px solid var(--line); border-radius:20px; padding:12px; background:rgba(0,0,0,.34); }
+      .beat-row h3 { margin:0 0 4px; }
+      .beat-row p { margin:0; opacity:.86; }
+      .row-actions { display:grid; grid-template-columns:repeat(2, minmax(92px, auto)); gap:8px; }
+      .small { padding:9px 11px; }
+      @media (max-width:760px) { .grid, .actions, .beat-row, .row-actions { grid-template-columns:1fr; } .manager-head { align-items:stretch; flex-direction:column; } }
     </style>
   </head>
   <body>
@@ -91,6 +96,17 @@ HTML = """<!doctype html>
         <label><input id="push" type="checkbox" style="width:auto; margin-right:8px;"> commit and push after export</label>
         <div id="status" class="status">ready.</div>
       </section>
+
+      <section class="panel">
+        <div class="manager-head">
+          <div>
+            <h2 style="margin:0;">uploaded previews</h2>
+            <p id="manager-count" style="margin:6px 0 0;">loading...</p>
+          </div>
+          <button id="refresh" class="small" type="button">refresh list</button>
+        </div>
+        <div id="manager-list" class="manager-list"></div>
+      </section>
     </main>
 
     <script>
@@ -112,6 +128,49 @@ HTML = """<!doctype html>
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || "request failed");
         return data;
+      };
+
+      const metaLine = (beat) => {
+        const bits = [];
+        if (beat.bpm) bits.push(`${beat.bpm} bpm`);
+        if (beat.key) bits.push(beat.key);
+        return bits.join(" / ") || "preview";
+      };
+
+      const escapeHtml = (value) => String(value || "").replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[char]));
+
+      const loadCatalog = async () => {
+        const response = await fetch(`/catalog?t=${Date.now()}`);
+        const data = await response.json();
+        const list = $("#manager-list");
+        $("#manager-count").textContent = `${data.beats.length} uploaded preview${data.beats.length === 1 ? "" : "s"}`;
+        list.innerHTML = "";
+        if (!data.beats.length) {
+          list.innerHTML = '<p>no uploaded previews yet.</p>';
+          return;
+        }
+
+        for (const beat of data.beats) {
+          const row = document.createElement("article");
+          row.className = "beat-row";
+          row.innerHTML = `
+            <div>
+              <h3>${escapeHtml(beat.title || beat.slug)}</h3>
+              <p>${escapeHtml(metaLine(beat))}</p>
+            </div>
+            <div class="row-actions">
+              <button class="small" data-play="${beat.preview}" type="button">play</button>
+              <button class="small" data-delete="${beat.slug}" type="button">remove</button>
+            </div>
+          `;
+          list.appendChild(row);
+        }
       };
 
       $("#upload").addEventListener("click", async () => {
@@ -171,10 +230,38 @@ HTML = """<!doctype html>
             push: $("#push").checked
           });
           status(data.message);
+          await loadCatalog();
         } catch (error) {
           status(error.message);
         }
       });
+
+      $("#refresh").addEventListener("click", loadCatalog);
+
+      $("#manager-list").addEventListener("click", async (event) => {
+        const play = event.target.dataset.play;
+        const slug = event.target.dataset.delete;
+
+        if (play) {
+          $("#player").src = `/site-preview/${play.split("/").pop()}?t=${Date.now()}`;
+          await $("#player").play();
+          status(`playing ${play}`);
+          return;
+        }
+
+        if (slug) {
+          if (!confirm(`remove ${slug} from the site?`)) return;
+          try {
+            const data = await postJson("/delete", { slug, push: $("#push").checked });
+            status(data.message);
+            await loadCatalog();
+          } catch (error) {
+            status(error.message);
+          }
+        }
+      });
+
+      loadCatalog();
     </script>
   </body>
 </html>"""
@@ -368,14 +455,39 @@ def upsert_beat(entry: dict) -> None:
     save_catalog(beats)
 
 
-def commit_and_push(slug: str) -> str:
+def commit_and_push(slug: str, action: str = "update") -> str:
     run(["git", "add", "beats"])
     status = subprocess.run(["git", "status", "--short"], cwd=REPO_ROOT, text=True, capture_output=True, check=True)
     if not status.stdout.strip():
         return "nothing changed."
-    run(["git", "commit", "-m", f"add beat preview {slug}"])
+    run(["git", "commit", "-m", f"{action} beat preview {slug}"])
     run(["git", "push"])
     return "committed and pushed."
+
+
+def delete_beat(slug: str) -> bool:
+    slug = slugify(slug)
+    beats = load_catalog()
+    keep = []
+    removed = None
+    for beat in beats:
+        if beat.get("slug") == slug:
+            removed = beat
+        else:
+            keep.append(beat)
+
+    if not removed:
+        return False
+
+    preview = str(removed.get("preview") or "")
+    preview_name = Path(preview).name
+    if preview_name:
+        preview_path = PREVIEWS_DIR / preview_name
+        if preview_path.exists() and preview_path.is_file():
+            preview_path.unlink()
+
+    save_catalog(keep)
+    return True
 
 
 def parse_multipart(body: bytes, content_type: str) -> tuple[str, bytes]:
@@ -423,8 +535,24 @@ class Handler(BaseHTTPRequestHandler):
             self.wfile.write(payload)
             return
 
+        if parsed.path == "/catalog":
+            self.send_json({"beats": load_catalog()})
+            return
+
         if parsed.path.startswith("/tmp/"):
             path = TMP_DIR / parsed.path.removeprefix("/tmp/")
+            if path.exists() and path.is_file():
+                payload = path.read_bytes()
+                self.send_response(HTTPStatus.OK)
+                self.send_header("Content-Type", "audio/mpeg")
+                self.send_header("Content-Length", str(len(payload)))
+                self.end_headers()
+                self.wfile.write(payload)
+                return
+
+        if parsed.path.startswith("/site-preview/"):
+            filename = Path(parsed.path.removeprefix("/site-preview/")).name
+            path = PREVIEWS_DIR / filename
             if path.exists() and path.is_file():
                 payload = path.read_bytes()
                 self.send_response(HTTPStatus.OK)
@@ -444,6 +572,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.handle_preview()
             elif self.path == "/export":
                 self.handle_export()
+            elif self.path == "/delete":
+                self.handle_delete()
             else:
                 self.send_error(HTTPStatus.NOT_FOUND)
         except Exception as error:
@@ -509,7 +639,22 @@ class Handler(BaseHTTPRequestHandler):
 
         message = f"exported {entry['title']} to beats/previews/{slug}.mp3"
         if payload.get("push"):
-            message += "\n" + commit_and_push(slug)
+            message += "\n" + commit_and_push(slug, "add")
+        self.send_json({"message": message})
+
+    def handle_delete(self) -> None:
+        payload = self.read_json()
+        slug = slugify(payload.get("slug") or "")
+        if not slug:
+            raise ValueError("missing slug")
+
+        removed = delete_beat(slug)
+        if not removed:
+            raise ValueError(f"could not find {slug}")
+
+        message = f"removed {slug} from beats"
+        if payload.get("push"):
+            message += "\n" + commit_and_push(slug, "remove")
         self.send_json({"message": message})
 
 
