@@ -14,18 +14,18 @@
     "preview": "previews/untainted10.mp3"
   },
   {
-    "title": "untainted2 431hz",
-    "bpm": "100",
-    "key": "f min",
-    "slug": "untainted2-431hz",
-    "preview": "previews/untainted2-431hz.mp3"
-  },
-  {
     "title": "greatgatsby11",
     "bpm": "136",
     "key": "d# min",
     "slug": "greatgatsby11",
     "preview": "previews/greatgatsby11.mp3"
+  },
+  {
+    "title": "untainted2 431hz",
+    "bpm": "100",
+    "key": "f min",
+    "slug": "untainted2-431hz",
+    "preview": "previews/untainted2-431hz.mp3"
   },
   {
     "title": "grain1 [mexiko]",
