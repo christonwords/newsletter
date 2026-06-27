@@ -3,137 +3,116 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="christon - producer, drumkits, sounds, go to vsts, and a2v.">
+    <meta name="description" content="christon - producer, beats, drumkits, go to vsts, and a2v.">
     <title>christon.xyz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;600;700;800&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <video class="background-video" autoplay muted loop playsinline aria-hidden="true">
-      <source src="video%20background.mp4" type="video/mp4">
-    </video>
-    <div class="veil" aria-hidden="true"></div>
-    <div class="film-grain" aria-hidden="true"></div>
-    <div class="cursor-halo" aria-hidden="true"></div>
-
     <audio id="background-audio" src="Background%20Music/background%20audio.mp3" loop preload="metadata"></audio>
 
     <header class="site-header">
-      <a class="brand-mark" href="#top">christon</a>
+      <a class="brand" href="#top">christon</a>
       <nav class="nav" aria-label="primary">
+        <a href="beats/">beats</a>
         <a href="#drumkits">drumkits</a>
         <a href="#vsts">go to vsts</a>
-        <a href="beats/">beats</a>
         <a href="a2v/">a2v</a>
-        <a href="#links">links</a>
-        <button class="audio-toggle" type="button" aria-pressed="false">sound: off</button>
+        <a href="#contact">contact</a>
+        <button class="audio-toggle" type="button" aria-pressed="false">sound off</button>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero section-shell" aria-labelledby="lead-title">
-        <div class="hero-copy float-in">
-          <h1 id="lead-title">christon</h1>
-          <p class="manifesto">
-            the best way to keep going is to keep reminding yourself why you started.
-            waking up uninspired will not stop you from trying when the purpose is clear.
-            the real question is how bad you want it, and what you are willing to keep becoming for it.
-          </p>
-        </div>
-
-        <div class="hero-orbit" aria-label="featured links">
-          <a class="orb float-in" href="#drumkits">
-            <img src="Drumkit%20Covers%20%26%20Links/Michael%20Drumkit.jpg" alt="michael drumkit cover">
-            <span>drumkits</span>
-          </a>
-          <a class="orb float-in" href="a2v/">
-            <img src="a2v/a2v_box_transparent.png" alt="a2v product box">
-            <span>a2v</span>
-          </a>
-          <a class="orb float-in" href="#vsts">
-            <img src="Go%20to%20VSTs/XV%20-%205080.png" alt="xv - 5080">
-            <span>go to vsts</span>
-          </a>
-        </div>
-      </section>
-
-      <section class="ticker" aria-label="ticker">
-        <p>
-          <span>beats for purchase by message or email</span>
-          <span>drumkits available now</span>
-          <span>go to vsts archived below</span>
-          <span>a2v lives at christon.xyz/a2v</span>
+      <section class="hero">
+        <p class="eyebrow">producer / sound archive</p>
+        <h1>christon</h1>
+        <p class="statement">
+          the best way to keep going is to keep reminding yourself why you started.
+          waking up uninspired will not stop you from trying when the purpose is clear.
         </p>
+        <div class="quick-links" aria-label="featured sections">
+          <a href="beats/"><span>01</span> beats</a>
+          <a href="#drumkits"><span>02</span> drumkits</a>
+          <a href="#vsts"><span>03</span> go to vsts</a>
+          <a href="a2v/"><span>04</span> a2v</a>
+        </div>
       </section>
 
-      <section class="section-shell drumkits" id="drumkits" aria-labelledby="drumkits-title">
-        <div class="section-heading float-in">
+      <section class="archive-panel" aria-labelledby="beats-title">
+        <div class="section-label">
+          <span>new</span>
+          <h2 id="beats-title">beat previews</h2>
+        </div>
+        <a class="feature-row" href="beats/">
+          <div>
+            <h3>storage bin</h3>
+            <p>compact 30 second previews with waveforms, bpm, and key.</p>
+          </div>
+          <span>open beats</span>
+        </a>
+      </section>
+
+      <section class="archive-panel" id="drumkits" aria-labelledby="drumkits-title">
+        <div class="section-label">
+          <span>shop</span>
           <h2 id="drumkits-title">drumkits</h2>
         </div>
-
         <div class="kit-grid">
-          <a class="kit-card float-in" href="https://payhip.com/b/LFezG" target="_blank" rel="noreferrer">
+          <a class="kit-card" href="https://payhip.com/b/LFezG" target="_blank" rel="noreferrer">
             <img src="Drumkit%20Covers%20%26%20Links/Michael%20Drumkit.jpg" alt="michael drumkit cover">
             <span>michael drumkit</span>
           </a>
-          <a class="kit-card float-in" href="https://payhip.com/b/4Zgut" target="_blank" rel="noreferrer">
+          <a class="kit-card" href="https://payhip.com/b/4Zgut" target="_blank" rel="noreferrer">
             <img src="Drumkit%20Covers%20%26%20Links/Rolling%20Stone%20Soundkit.jpg" alt="rolling stone soundkit cover">
             <span>rolling stone soundkit</span>
           </a>
-          <a class="kit-card float-in" href="https://payhip.com/b/HqM5w" target="_blank" rel="noreferrer">
+          <a class="kit-card" href="https://payhip.com/b/HqM5w" target="_blank" rel="noreferrer">
             <img src="Drumkit%20Covers%20%26%20Links/Prosper%20Drumkit.jpg" alt="prosper drumkit cover">
             <span>prosper drumkit</span>
           </a>
         </div>
       </section>
 
-      <section class="section-shell vsts" id="vsts" aria-labelledby="vsts-title">
-        <div class="section-heading float-in">
+      <section class="archive-panel" id="vsts" aria-labelledby="vsts-title">
+        <div class="section-label">
+          <span>tools</span>
           <h2 id="vsts-title">go to vsts</h2>
         </div>
-
         <div class="vst-grid">
-          <figure class="float-in"><img src="Go%20to%20VSTs/6S%20Montana%20Rack.png" alt="6s montana rack"><figcaption>6s montana rack</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/D%20-%2050.png" alt="d - 50"><figcaption>d - 50</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/JD%20-%20800.png" alt="jd - 800"><figcaption>jd - 800</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/JV%20-%201080.png" alt="jv - 1080"><figcaption>jv - 1080</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Konktat%20Bank%20-%20EMU%20Proteus%20Rack.png" alt="kontakt bank - emu proteus rack"><figcaption>kontakt bank - emu proteus rack</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%205000%20Karat.png" alt="kontakt bank - 5000 karat"><figcaption>kontakt bank - 5000 karat</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Evolution%20Infinity.png" alt="kontakt bank - evolution infinity"><figcaption>kontakt bank - evolution infinity</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20History%20World%20Tour.png" alt="kontakt bank - history world tour"><figcaption>kontakt bank - history world tour</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Roland%20Fantom%20X8.png" alt="kontakt bank - roland fantom x8"><figcaption>kontakt bank - roland fantom x8</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Techno%20Rap.png" alt="kontakt bank - techno rap"><figcaption>kontakt bank - techno rap</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Back.png" alt="kontakt bank - trap back"><figcaption>kontakt bank - trap back</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Motivation%20101.png" alt="kontakt bank - trap motivation 101"><figcaption>kontakt bank - trap motivation 101</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Yamaha%20Motif%20Pianos.png" alt="kontakt bank - yamaha motif pianos"><figcaption>kontakt bank - yamaha motif pianos</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Lounge%20Lizard.png" alt="lounge lizard"><figcaption>lounge lizard</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Pure%20Synth%20Platinum.png" alt="pure synth platinum"><figcaption>pure synth platinum</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Romantic%20Keys.png" alt="romantic keys"><figcaption>romantic keys</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/Studio%20Strings.png" alt="studio strings"><figcaption>studio strings</figcaption></figure>
-          <figure class="float-in"><img src="Go%20to%20VSTs/XV%20-%205080.png" alt="xv - 5080"><figcaption>xv - 5080</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/6S%20Montana%20Rack.png" alt="6s montana rack"><figcaption>6s montana rack</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/D%20-%2050.png" alt="d - 50"><figcaption>d - 50</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/JD%20-%20800.png" alt="jd - 800"><figcaption>jd - 800</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/JV%20-%201080.png" alt="jv - 1080"><figcaption>jv - 1080</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Konktat%20Bank%20-%20EMU%20Proteus%20Rack.png" alt="kontakt bank - emu proteus rack"><figcaption>kontakt bank - emu proteus rack</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%205000%20Karat.png" alt="kontakt bank - 5000 karat"><figcaption>kontakt bank - 5000 karat</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Evolution%20Infinity.png" alt="kontakt bank - evolution infinity"><figcaption>kontakt bank - evolution infinity</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20History%20World%20Tour.png" alt="kontakt bank - history world tour"><figcaption>kontakt bank - history world tour</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Roland%20Fantom%20X8.png" alt="kontakt bank - roland fantom x8"><figcaption>kontakt bank - roland fantom x8</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Techno%20Rap.png" alt="kontakt bank - techno rap"><figcaption>kontakt bank - techno rap</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Back.png" alt="kontakt bank - trap back"><figcaption>kontakt bank - trap back</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Trap%20Motivation%20101.png" alt="kontakt bank - trap motivation 101"><figcaption>kontakt bank - trap motivation 101</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Kontakt%20Bank%20-%20Yamaha%20Motif%20Pianos.png" alt="kontakt bank - yamaha motif pianos"><figcaption>kontakt bank - yamaha motif pianos</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Lounge%20Lizard.png" alt="lounge lizard"><figcaption>lounge lizard</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Pure%20Synth%20Platinum.png" alt="pure synth platinum"><figcaption>pure synth platinum</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Romantic%20Keys.png" alt="romantic keys"><figcaption>romantic keys</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/Studio%20Strings.png" alt="studio strings"><figcaption>studio strings</figcaption></figure>
+          <figure><img src="Go%20to%20VSTs/XV%20-%205080.png" alt="xv - 5080"><figcaption>xv - 5080</figcaption></figure>
         </div>
       </section>
 
-      <section class="section-shell links" id="links" aria-labelledby="links-title">
-        <div class="section-heading float-in">
-          <h2 id="links-title">links</h2>
+      <section class="archive-panel" id="contact" aria-labelledby="contact-title">
+        <div class="section-label">
+          <span>business</span>
+          <h2 id="contact-title">contact</h2>
         </div>
-
-        <div class="business-notice float-in">
-          <h3>beats and serious inquiries</h3>
-          <p>send a message or email <a href="mailto:softparish@gmail.com">softparish@gmail.com</a>.</p>
-        </div>
-
-        <div class="link-board">
-          <a class="float-in" href="https://payhip.com/b/LFezG" target="_blank" rel="noreferrer">buy michael drumkit</a>
-          <a class="float-in" href="https://payhip.com/b/4Zgut" target="_blank" rel="noreferrer">buy rolling stone soundkit</a>
-          <a class="float-in" href="https://payhip.com/b/HqM5w" target="_blank" rel="noreferrer">buy prosper drumkit</a>
-          <a class="float-in" href="beats/">open beats</a>
-          <a class="float-in" href="a2v/">open a2v</a>
-          <a class="float-in" href="https://instagram.com/christonwords/" target="_blank" rel="noreferrer">instagram</a>
-          <a class="float-in" href="mailto:softparish@gmail.com">softparish@gmail.com</a>
+        <div class="contact-grid">
+          <a href="mailto:softparish@gmail.com">softparish@gmail.com</a>
+          <a href="https://instagram.com/christonwords/" target="_blank" rel="noreferrer">@christonwords</a>
+          <a href="a2v/">a2v</a>
+          <a href="beats/">beats</a>
         </div>
       </section>
     </main>
