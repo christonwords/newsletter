@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="christon beat previews.">
+    <title>christon beats</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;600;700;800&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <video class="background-video" autoplay muted loop playsinline aria-hidden="true">
+      <source src="../video%20background.mp4" type="video/mp4">
+    </video>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand-mark" href="../">christon</a>
+      <nav class="nav" aria-label="beats navigation">
+        <a href="../">home</a>
+        <a href="../a2v/">a2v</a>
+        <a href="mailto:softparish@gmail.com">inquire</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">storage bin</p>
+        <h1>beats</h1>
+        <p>thirty second previews only. for purchases, licensing, stems, custom work, or anything business related, email <a href="mailto:softparish@gmail.com">softparish@gmail.com</a>.</p>
+      </section>
+
+      <section class="beats-panel" aria-labelledby="beats-title">
+        <div class="panel-head">
+          <h2 id="beats-title">previews</h2>
+          <p id="beat-count">loading...</p>
+        </div>
+        <div class="beat-list" id="beat-list"></div>
+      </section>
+    </main>
+
+    <template id="beat-template">
+      <article class="beat-card">
+        <button class="play-button" type="button" aria-label="play preview">play</button>
+        <div class="beat-main">
+          <div class="beat-meta">
+            <h3></h3>
+            <p></p>
+          </div>
+          <canvas width="900" height="140"></canvas>
+          <audio preload="metadata"></audio>
+        </div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
