@@ -15,7 +15,7 @@ const drawFallback = (canvas) => {
   const width = canvas.width;
   const height = canvas.height;
   ctx.clearRect(0, 0, width, height);
-  ctx.strokeStyle = "rgba(255, 28, 28, 0.9)";
+  ctx.strokeStyle = "rgba(255, 37, 37, 0.82)";
   ctx.lineWidth = 2;
   ctx.beginPath();
   for (let x = 0; x < width; x += 8) {
@@ -41,9 +41,9 @@ const drawWaveform = async (canvas, src) => {
     const middle = height / 2;
 
     ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = "rgba(255, 28, 28, 0.08)";
+    ctx.fillStyle = "rgba(255, 37, 37, 0.035)";
     ctx.fillRect(0, 0, width, height);
-    ctx.strokeStyle = "rgba(255, 28, 28, 0.96)";
+    ctx.strokeStyle = "rgba(255, 37, 37, 0.84)";
     ctx.lineWidth = 2;
 
     for (let i = 0; i < width; i += 1) {

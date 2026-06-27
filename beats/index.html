@@ -7,18 +7,12 @@
     <title>christon beats</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400;600;700;800&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <video class="background-video" autoplay muted loop playsinline aria-hidden="true">
-      <source src="../video%20background.mp4" type="video/mp4">
-    </video>
-    <div class="veil" aria-hidden="true"></div>
-    <div class="film-grain" aria-hidden="true"></div>
-
     <header class="site-header">
-      <a class="brand-mark" href="../">christon</a>
+      <a class="brand" href="../">christon</a>
       <nav class="nav" aria-label="beats navigation">
         <a href="../">home</a>
         <a href="../a2v/">a2v</a>
@@ -36,7 +30,10 @@
 
       <section class="beats-panel" aria-labelledby="beats-title">
         <div class="panel-head">
-          <h2 id="beats-title">previews</h2>
+          <div>
+            <span>archive</span>
+            <h2 id="beats-title">previews</h2>
+          </div>
           <p id="beat-count">loading...</p>
         </div>
         <div class="beat-list" id="beat-list"></div>
