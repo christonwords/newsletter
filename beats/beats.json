@@ -54,5 +54,12 @@
     "key": "f# min",
     "slug": "untainted9",
     "preview": "previews/untainted9.mp3"
+  },
+  {
+    "title": "wavy8",
+    "bpm": "101",
+    "key": "f# min",
+    "slug": "wavy8",
+    "preview": "previews/wavy8.mp3"
   }
 ]
