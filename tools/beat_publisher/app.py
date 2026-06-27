@@ -57,7 +57,7 @@ HTML = """<!doctype html>
       .beat-row { display:grid; grid-template-columns:1fr auto; gap:12px; align-items:center; border:1px solid var(--line); border-radius:20px; padding:12px; background:rgba(0,0,0,.34); }
       .beat-row h3 { margin:0 0 4px; }
       .beat-row p { margin:0; opacity:.86; }
-      .row-actions { display:grid; grid-template-columns:repeat(2, minmax(92px, auto)); gap:8px; }
+      .row-actions { display:grid; grid-template-columns:repeat(4, minmax(72px, auto)); gap:8px; }
       .small { padding:9px 11px; }
       @media (max-width:760px) { .grid, .actions, .beat-row, .row-actions { grid-template-columns:1fr; } .manager-head { align-items:stretch; flex-direction:column; } }
     </style>
@@ -165,6 +165,8 @@ HTML = """<!doctype html>
               <p>${escapeHtml(metaLine(beat))}</p>
             </div>
             <div class="row-actions">
+              <button class="small" data-move="${beat.slug}" data-direction="up" type="button">up</button>
+              <button class="small" data-move="${beat.slug}" data-direction="down" type="button">down</button>
               <button class="small" data-play="${beat.preview}" type="button">play</button>
               <button class="small" data-delete="${beat.slug}" type="button">remove</button>
             </div>
@@ -241,11 +243,24 @@ HTML = """<!doctype html>
       $("#manager-list").addEventListener("click", async (event) => {
         const play = event.target.dataset.play;
         const slug = event.target.dataset.delete;
+        const move = event.target.dataset.move;
+        const direction = event.target.dataset.direction;
 
         if (play) {
           $("#player").src = `/site-preview/${play.split("/").pop()}?t=${Date.now()}`;
           await $("#player").play();
           status(`playing ${play}`);
+          return;
+        }
+
+        if (move && direction) {
+          try {
+            const data = await postJson("/reorder", { slug: move, direction, push: $("#push").checked });
+            status(data.message);
+            await loadCatalog();
+          } catch (error) {
+            status(error.message);
+          }
           return;
         }
 
@@ -451,8 +466,30 @@ def upsert_beat(entry: dict) -> None:
     beats = load_catalog()
     beats = [beat for beat in beats if beat.get("slug") != entry["slug"]]
     beats.append(entry)
-    beats.sort(key=lambda beat: beat.get("title", ""))
     save_catalog(beats)
+
+
+def reorder_beat(slug: str, direction: str) -> bool:
+    slug = slugify(slug)
+    beats = load_catalog()
+    index = next((i for i, beat in enumerate(beats) if beat.get("slug") == slug), -1)
+    if index < 0:
+        return False
+
+    if direction == "up":
+        new_index = max(0, index - 1)
+    elif direction == "down":
+        new_index = min(len(beats) - 1, index + 1)
+    else:
+        raise ValueError("direction must be up or down")
+
+    if new_index == index:
+        return True
+
+    beat = beats.pop(index)
+    beats.insert(new_index, beat)
+    save_catalog(beats)
+    return True
 
 
 def commit_and_push(slug: str, action: str = "update") -> str:
@@ -574,6 +611,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.handle_export()
             elif self.path == "/delete":
                 self.handle_delete()
+            elif self.path == "/reorder":
+                self.handle_reorder()
             else:
                 self.send_error(HTTPStatus.NOT_FOUND)
         except Exception as error:
@@ -655,6 +694,22 @@ class Handler(BaseHTTPRequestHandler):
         message = f"removed {slug} from beats"
         if payload.get("push"):
             message += "\n" + commit_and_push(slug, "remove")
+        self.send_json({"message": message})
+
+    def handle_reorder(self) -> None:
+        payload = self.read_json()
+        slug = slugify(payload.get("slug") or "")
+        direction = str(payload.get("direction") or "").lower()
+        if not slug:
+            raise ValueError("missing slug")
+
+        moved = reorder_beat(slug, direction)
+        if not moved:
+            raise ValueError(f"could not find {slug}")
+
+        message = f"moved {slug} {direction}"
+        if payload.get("push"):
+            message += "\n" + commit_and_push(slug, "reorder")
         self.send_json({"message": message})
 
 
