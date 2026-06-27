@@ -35,18 +35,18 @@
     "preview": "previews/grain4-mexiko.mp3"
   },
   {
-    "title": "untainted8",
-    "bpm": "173",
-    "key": "f min",
-    "slug": "untainted8",
-    "preview": "previews/untainted8.mp3"
-  },
-  {
     "title": "greatgatsby11",
     "bpm": "136",
     "key": "d# min",
     "slug": "greatgatsby11",
     "preview": "previews/greatgatsby11.mp3"
+  },
+  {
+    "title": "untainted8",
+    "bpm": "173",
+    "key": "f min",
+    "slug": "untainted8",
+    "preview": "previews/untainted8.mp3"
   },
   {
     "title": "untainted9",
