@@ -56,17 +56,17 @@
     "preview": "previews/untainted8.mp3"
   },
   {
-    "title": "untainted9",
-    "bpm": "167",
-    "key": "f# min",
-    "slug": "untainted9",
-    "preview": "previews/untainted9.mp3"
-  },
-  {
     "title": "holdher15",
     "bpm": "153",
     "key": "d# min",
     "slug": "holdher15",
     "preview": "previews/holdher15.mp3"
+  },
+  {
+    "title": "untainted9",
+    "bpm": "167",
+    "key": "f# min",
+    "slug": "untainted9",
+    "preview": "previews/untainted9.mp3"
   }
 ]
