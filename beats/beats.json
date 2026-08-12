@@ -12,5 +12,12 @@
     "key": "b min",
     "slug": "throneoccupier1",
     "preview": "previews/throneoccupier1.mp3"
+  },
+  {
+    "title": "throneoccupier3",
+    "bpm": "156",
+    "key": "",
+    "slug": "throneoccupier3",
+    "preview": "previews/throneoccupier3.mp3"
   }
 ]
