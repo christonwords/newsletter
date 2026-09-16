@@ -1,6 +1,6 @@
 # christon.xyz site and publisher overhaul
 
-status: ready for final review
+status: approved
 
 date: 2026-09-16
 
