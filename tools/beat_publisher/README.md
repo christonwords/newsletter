@@ -1,26 +1,33 @@
 # beat publisher
 
-local app for creating 30 second mp3 previews from full wav beats.
+local batch preview editor for `christon.xyz/beats`. source wavs and app state stay in `.beat_publisher_data/` and are never committed.
 
-run from the repo root:
+## run
+
+requirements: python 3.11+, ffmpeg, ffprobe, and git.
+
+double-click `run_beat_publisher.bat`, or run:
 
 ```powershell
-python tools/beat_publisher/app.py
+python tools\beat_publisher\app.py
 ```
 
-workflow:
+the app binds only to `127.0.0.1` and opens a token-protected local page.
 
-1. import a full wav.
-2. the app reads title, bpm, and key from the filename.
-3. it suggests a preview start by scanning the loudest usable section.
-4. adjust the start time if needed.
-5. click `make preview`.
-6. play the mp3 before export.
-7. click `export to site`.
-8. optionally check `commit and push after export`.
+## workflow
 
-the `uploaded previews` section shows everything already in `beats/beats.json`.
-use `up` and `down` to set the public order, `play` to audition an uploaded preview, or `remove` to delete it from the site.
-with `commit and push after export` checked, exports, reorders, and removals are committed and pushed too.
+1. choose several wav files at once.
+2. review parsed title, bpm, and key in the queue.
+3. move the fixed 30-second range with the slider, waveform, arrow keys, or shift+arrow keys.
+4. make and listen to the encoded mp3, then approve it.
+5. reorder with drag and drop or the arrow buttons. use status to hide, restore, or remove previews.
+6. review publish, then create and push one scoped git commit.
 
-full wavs stay local in `.beat_publisher_tmp/` while the app is running. only 30 second mp3 previews and `beats/beats.json` are meant to be committed.
+if github rejects a push, the commit remains local and the app shows `retry github push`. reopening the app restores metadata, order, status, and preview ranges from sqlite.
+
+## tests
+
+```powershell
+python -m unittest discover -s tools\beat_publisher\tests -v
+npm.cmd test
+```

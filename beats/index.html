@@ -3,57 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="christon beat previews.">
-    <title>christon beats</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=5">
+    <meta name="description" content="christon beat previews, bpm, and keys.">
+    <title>beats / christon.xyz</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/archive.css">
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="../">christon</a>
-      <nav class="nav" aria-label="beats navigation">
-        <a href="../">home</a>
-        <a href="../a2v/">a2v</a>
-        <a href="https://instagram.com/christonwords/" target="_blank" rel="noreferrer">dm @christonwords</a>
-        <a href="mailto:softparish@gmail.com">inquire</a>
+    <audio id="preview-audio" preload="none"></audio>
+    <header class="utility-nav site-shell">
+      <a class="utility-nav__brand" href="../">christon.xyz</a>
+      <nav class="utility-nav__links" aria-label="beats navigation">
+        <a href="../">index</a><a href="../drumkits/">drumkits</a><a href="../vsts/">go to vsts</a><a href="../a2v/">a2v</a><a href="mailto:softparish@gmail.com">inquire</a>
       </nav>
     </header>
-
-    <main>
-      <section class="hero">
-        <p class="eyebrow">storage bin</p>
-        <h1>beats</h1>
-        <p>thirty second previews only. for purchases, licensing, stems, custom work, or anything business related, email <a href="mailto:softparish@gmail.com">softparish@gmail.com</a> or dm <a href="https://instagram.com/christonwords/" target="_blank" rel="noreferrer">@christonwords</a>.</p>
-      </section>
-
-      <section class="beats-panel" aria-labelledby="beats-title">
-        <div class="panel-head">
-          <div>
-            <span>archive</span>
-            <h2 id="beats-title">previews</h2>
-          </div>
-          <p id="beat-count">loading...</p>
-        </div>
+    <main class="site-shell">
+      <section class="archive-hero"><h1>beats</h1><p>thirty second previews. for purchases, licensing, stems, custom work, or anything business related, email <a href="mailto:softparish@gmail.com">softparish@gmail.com</a> or dm <a href="https://instagram.com/christonwords/" target="_blank" rel="noreferrer">@christonwords</a>.</p></section>
+      <section aria-labelledby="archive-title">
+        <div class="archive-tools"><label for="beat-search" id="archive-title">search the archive</label><input id="beat-search" type="search" placeholder="title, bpm, or key" autocomplete="off"><p id="beat-count" aria-live="polite">loading...</p></div>
         <div class="beat-list" id="beat-list"></div>
+        <button class="load-more" id="load-more" type="button" hidden>load more</button>
       </section>
     </main>
-
-    <template id="beat-template">
-      <article class="beat-card">
-        <button class="play-button" type="button" aria-label="play preview">play</button>
-        <div class="beat-main">
-          <div class="beat-meta">
-            <h3></h3>
-            <p></p>
-          </div>
-          <canvas width="900" height="64"></canvas>
-          <audio preload="metadata"></audio>
-        </div>
-      </article>
-    </template>
-
-    <script src="script.js"></script>
+    <footer class="page-footer site-shell"><p>christon.xyz / beats</p><a href="mailto:softparish@gmail.com">business inquiries</a></footer>
+    <script type="module" src="../assets/js/beats.js"></script>
   </body>
 </html>

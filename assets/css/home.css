@@ -1,0 +1,265 @@
+.identity {
+  display: grid;
+  min-height: 600px;
+  align-content: center;
+  padding: 76px 0 64px;
+}
+
+.wordmark {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 12rem;
+  font-weight: 500;
+  line-height: 0.78;
+  letter-spacing: 0;
+}
+
+.identity__meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+  gap: 48px;
+  align-items: start;
+  margin-top: 46px;
+}
+
+.identity__role {
+  color: var(--red);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.identity__statement {
+  margin-bottom: 0;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+.content-index {
+  border-top: 1px solid var(--rule);
+  margin-bottom: 100px;
+}
+
+.index-entry {
+  border-bottom: 1px solid var(--rule);
+}
+
+.index-row {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) auto;
+  width: 100%;
+  align-items: baseline;
+  gap: 20px;
+  padding: 18px 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.index-row:hover .index-row__title,
+.index-row[aria-expanded="true"] .index-row__title,
+.index-row[aria-expanded="true"] .index-row__action {
+  color: var(--red);
+}
+
+.index-row__number {
+  color: var(--red);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.index-row__title {
+  font-family: var(--serif);
+  font-size: 3.4rem;
+  line-height: 0.9;
+}
+
+.index-row__action {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.index-panel {
+  padding: 12px 0 30px 74px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+}
+
+.panel-heading a {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.home-beats {
+  border-top: 1px solid var(--rule);
+}
+
+.home-drumkits {
+  display: grid;
+  grid-auto-columns: minmax(180px, 260px);
+  grid-auto-flow: column;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.home-vsts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.home-drumkits .drumkit-item,
+.drumkit-item {
+  color: inherit;
+  text-decoration: none;
+}
+
+.drumkit-item img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--field);
+}
+
+.drumkit-item span {
+  display: block;
+  padding: 9px 0 2px;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.vst-item {
+  display: grid;
+  min-height: 180px;
+  align-content: space-between;
+  margin: 0;
+  padding: 14px;
+  background: var(--paper);
+}
+
+.vst-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+}
+
+.vst-item figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.a2v-feature {
+  display: grid;
+  grid-template-columns: minmax(220px, 420px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.a2v-feature img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  background: #090909;
+}
+
+.a2v-feature h3,
+.contact-actions h3 {
+  margin-bottom: 12px;
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.a2v-feature p {
+  max-width: 600px;
+  color: var(--muted);
+}
+
+.text-action {
+  color: var(--red);
+  font-weight: 800;
+}
+
+.contact-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.contact-actions a {
+  display: grid;
+  min-height: 130px;
+  align-content: space-between;
+  padding: 18px;
+  background: var(--paper);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact-actions a:hover {
+  color: var(--red);
+}
+
+@media (max-width: 920px) {
+  .wordmark {
+    font-size: 7rem;
+  }
+
+  .identity__meta,
+  .a2v-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .home-vsts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .identity {
+    min-height: 520px;
+    padding: 70px 0 48px;
+  }
+
+  .wordmark {
+    font-size: 4.8rem;
+  }
+
+  .identity__meta {
+    gap: 24px;
+    margin-top: 34px;
+  }
+
+  .index-row {
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .index-row__title {
+    font-size: 2.1rem;
+  }
+
+  .index-panel {
+    padding-left: 0;
+  }
+
+  .home-vsts,
+  .contact-actions {
+    grid-template-columns: 1fr;
+  }
+}

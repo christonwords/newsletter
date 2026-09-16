@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="publisher-token" content="__TOKEN__">
+    <title>beat publisher</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="kicker">christon.xyz / local publishing desk</p>
+        <h1>beat publisher</h1>
+      </div>
+      <div class="top-actions">
+        <span id="save-state">saved locally</span>
+        <label class="button primary" for="wav-files">add wavs</label>
+        <input id="wav-files" type="file" accept=".wav,audio/wav" multiple hidden>
+      </div>
+    </header>
+
+    <main class="desk">
+      <aside class="queue-pane">
+        <div class="pane-heading">
+          <div><span class="step">01</span><h2>queue</h2></div>
+          <span id="queue-count">0 files</span>
+        </div>
+        <div class="queue-tools">
+          <input id="search" type="search" placeholder="search title, bpm, key">
+          <select id="status-filter" aria-label="filter status">
+            <option value="">all status</option>
+            <option value="draft">draft</option>
+            <option value="ready">ready</option>
+            <option value="published">published</option>
+            <option value="hidden">hidden</option>
+            <option value="removed">removed</option>
+          </select>
+        </div>
+        <div id="queue" class="queue" aria-live="polite"></div>
+      </aside>
+
+      <section class="editor-pane">
+        <div class="pane-heading"><div><span class="step">02</span><h2>preview editor</h2></div></div>
+        <div id="empty-editor" class="empty-state">
+          <p>add wavs or select a beat from the queue.</p>
+          <label class="text-button" for="wav-files">choose a batch</label>
+        </div>
+        <form id="editor" class="editor" hidden>
+          <div class="field title-field"><label for="title">title</label><input id="title" autocomplete="off"></div>
+          <div class="meta-grid">
+            <div class="field"><label for="bpm">bpm</label><input id="bpm" inputmode="numeric"></div>
+            <div class="field"><label for="key">key</label><input id="key"></div>
+            <div class="field"><label for="slug">slug</label><input id="slug"></div>
+          </div>
+          <div class="wave-head"><span>full wav</span><strong id="range-label">00:00.0 - 00:30.0</strong></div>
+          <canvas id="waveform" height="190" tabindex="0" aria-label="preview range waveform"></canvas>
+          <input id="start" type="range" min="0" step="0.1" value="0" aria-label="preview start">
+          <div class="range-actions">
+            <button id="smart" type="button">use smart selection</button>
+            <label><input id="normalize" type="checkbox" checked> normalize</label>
+          </div>
+          <div id="warnings" class="warnings"></div>
+          <div class="audition-row">
+            <button id="source-play" type="button">play source</button>
+            <button id="make-preview" class="primary" type="button">make 30 sec preview</button>
+            <button id="preview-play" type="button" disabled>play encoded</button>
+          </div>
+          <audio id="audio" controls preload="none"></audio>
+          <div class="approval-row">
+            <select id="visibility" aria-label="beat status">
+              <option value="draft">draft</option>
+              <option value="ready">ready</option>
+              <option value="published">published</option>
+              <option value="hidden">hidden</option>
+              <option value="removed">removed</option>
+            </select>
+            <button id="approve" class="primary" type="button">approve &amp; next</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="publish-pane">
+        <div class="pane-heading"><div><span class="step">03</span><h2>publish</h2></div></div>
+        <div class="stats">
+          <div><strong id="draft-count">0</strong><span>draft</span></div>
+          <div><strong id="ready-count">0</strong><span>ready</span></div>
+          <div><strong id="live-count">0</strong><span>live</span></div>
+        </div>
+        <div class="publish-copy">
+          <p>one reviewed commit updates the public order, catalog, and preview files.</p>
+          <p id="publish-state">nothing waiting.</p>
+        </div>
+        <button id="review-publish" class="publish-button" type="button">review publish</button>
+        <button id="retry-push" type="button" hidden>retry github push</button>
+        <pre id="activity" aria-live="polite">ready.</pre>
+      </aside>
+    </main>
+
+    <dialog id="publish-dialog">
+      <form method="dialog">
+        <p class="kicker">final review</p>
+        <h2>publish this batch?</h2>
+        <div id="review-summary"></div>
+        <p>only managed files inside <code>beats/</code> will be staged.</p>
+        <div class="dialog-actions">
+          <button value="cancel">cancel</button>
+          <button id="confirm-publish" class="primary" value="default" type="button">commit &amp; push</button>
+        </div>
+      </form>
+    </dialog>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

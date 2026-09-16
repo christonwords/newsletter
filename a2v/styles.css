@@ -150,6 +150,12 @@ img {
   background: rgba(255, 255, 255, 0.11);
 }
 
+.nav-shell nav .back-to-index {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
 .nav-buy {
   justify-content: center;
   min-height: 38px;
@@ -187,7 +193,7 @@ main {
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.16em;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 h1,
@@ -321,7 +327,7 @@ h3 {
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 .showcase {
